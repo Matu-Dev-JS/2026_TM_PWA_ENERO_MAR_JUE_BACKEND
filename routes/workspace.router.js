@@ -5,6 +5,7 @@ import authMiddleware from "../middlewares/auth.middlware.js";
 const workspaceRouter = express.Router()
 
 workspaceRouter.get('/', authMiddleware, workspaceController.getWorkspaces)
+workspaceRouter.post('/', authMiddleware, workspaceController.create)
 
 
 export default workspaceRouter
