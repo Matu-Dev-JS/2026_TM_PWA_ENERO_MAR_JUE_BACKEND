@@ -56,7 +56,7 @@ app.listen(
         'Descripcion del espacio de trabajo'
     )
     //Me agrego como miembro
-    await workspaceRepository.addMember(workspace._id, '69664b767fa3b6ffd51dcd7b', 'Owner')
+    await workspaceRepository.addMember(workspace._id, '69664b767fa3b6ffd51dcd7b' //Remplazen por su id, 'Owner')
 }
 
 crearEspacioDeTrabajo() */
