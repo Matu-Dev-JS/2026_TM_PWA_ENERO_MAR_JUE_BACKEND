@@ -7,6 +7,9 @@ const workspaceRouter = express.Router()
 
 workspaceRouter.get('/', authMiddleware, workspaceController.getWorkspaces)
 workspaceRouter.post('/', authMiddleware, workspaceController.create)
+
+workspaceRouter.get('/:workspace_id', authMiddleware, workspaceController.getById)
+
 workspaceRouter.delete('/:workspace_id', authMiddleware, workspaceController.delete)
 workspaceRouter.post(
     '/:workspace_id/members', 
@@ -15,5 +18,6 @@ workspaceRouter.post(
     workspaceController.addMemberRequest
 )
 workspaceRouter.get('/:workspace_id/members/accept-invitation', workspaceController.acceptInvitation)
+
 
 export default workspaceRouter
