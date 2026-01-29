@@ -3,6 +3,8 @@ import workspaceController from "../controllers/workspace.controller.js";
 import authMiddleware from "../middlewares/auth.middlware.js";
 import workspaceMiddleware from "../middlewares/workspace.middleware.js";
 import { channelController } from "../controllers/channel.controller.js";
+import channelMiddleware from "../middlewares/channel.middleware.js";
+import messagesController from "../controllers/messages.controller.js";
 
 const workspaceRouter = express.Router()
 
@@ -32,6 +34,15 @@ workspaceRouter.post(
     authMiddleware,
     workspaceMiddleware(['Owner', 'Admin']),
     channelController.create
+)
+
+
+workspaceRouter.post(
+    '/:workspace_id/channels/:channel_id/messages',
+    authMiddleware,
+    workspaceMiddleware(),
+    channelMiddleware,
+    messagesController.create
 )
 
 export default workspaceRouter
