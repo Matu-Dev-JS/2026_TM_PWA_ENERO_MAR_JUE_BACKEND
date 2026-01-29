@@ -1,4 +1,3 @@
-import { populate } from "dotenv";
 import ChannelMessages from "../models/ChannelsMessages.model.js";
 
 class MessagesRepository{

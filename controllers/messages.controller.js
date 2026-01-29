@@ -38,7 +38,18 @@ class MessagesController {
 
     async getByChannelId (request, response){
         try{
-
+            const {channel_id} = request.params
+            const messages = await messagesRepository.getAllByChannelId(channel_id)
+            return response.json(
+                {
+                    ok: true, 
+                    status: 200,
+                    message: 'Mensajes obtenidos con exito',
+                    data: {
+                        messages
+                    }
+                }
+            )
         }
          catch (error) {
             console.log("Error en crear mensaje", error)
