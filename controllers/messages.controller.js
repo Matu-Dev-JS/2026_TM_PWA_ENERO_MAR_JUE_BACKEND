@@ -35,6 +35,30 @@ class MessagesController {
             })
         }
     }
+
+    async getByChannelId (request, response){
+        try{
+
+        }
+         catch (error) {
+            console.log("Error en crear mensaje", error)
+            if (error.status) {
+                return response.json({
+                    status: error.status,
+                    ok: false,
+                    message: error.message,
+                    data: null
+                })
+            }
+
+            return response.json({
+                ok: false,
+                status: 500,
+                message: "Error interno del servidor",
+                data: null
+            })
+        }
+    }
 }
 
 const messagesController = new MessagesController()
