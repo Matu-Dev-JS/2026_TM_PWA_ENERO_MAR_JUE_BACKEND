@@ -24,5 +24,5 @@
 - Crear un middleware de canales, channelMiddleware (Desarrollar este ahora)
     - Verificar que x canal exista
     - Verificar que pertenezca a x espacio de trabajo
-- GET /:workspace_id/channels/:channel_id/messages => Obtener mensajes relacionados al canal
 - POST /:workspace_id/channels/:channel_id/messages => Crear mensaje
+- GET /:workspace_id/channels/:channel_id/messages => Obtener mensajes relacionados al canal
