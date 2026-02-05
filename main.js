@@ -7,8 +7,11 @@ import cors from 'cors'
 import workspaceRouter from "./routes/workspace.router.js"
 import workspaceRepository from "./repository/workspace.repository.js"
 import messagesRepository from "./repository/messages.repository.js"
-
+import { checkDB } from "./config/mysql.config.js"
+import ENVIRONMENT from "./config/environment.config.js"
+console.log(ENVIRONMENT)
 connectMongoDB()
+checkDB()
 
 //Crear un servidor web (Express app)
 const app = express()
@@ -30,7 +33,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/workspace", workspaceRouter)
 
 app.listen(
-    8080, 
+    8080,
     () => {
         console.log('Nuestra app se escucha en el puerto 8080')
     }

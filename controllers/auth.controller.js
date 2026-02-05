@@ -27,10 +27,10 @@ class AuthController {
                 {
                     email: email //Guardamos el email del usuario que se quiere registrar
                 },
-                ENVIRONMENT.JWT_SECRET_KEY/* ,
-                {
-                    expiresIn: '7d'
-                } */
+                ENVIRONMENT.JWT_SECRET_KEY
+                //Fecha de expiracion en 24hs
+               /*  , { expiresIn: '24h' } */
+                
             )
 
             mail_transporter.sendMail(
