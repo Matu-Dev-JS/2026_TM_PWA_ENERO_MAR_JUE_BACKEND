@@ -5,6 +5,7 @@ import authRouter from "./routes/auth.router.js"
 import cors from 'cors'
 import workspaceRouter from "./routes/workspace.router.js"
 import { verifyApiKeyMiddleware } from "./middlewares/apikey.middleware.js"
+import { errorHandlerMiddleware } from "./middlewares/error.middleware.js"
 
 connectMongoDB()
 
@@ -17,6 +18,8 @@ app.use(verifyApiKeyMiddleware)
 
 app.use("/api/auth", authRouter)
 app.use("/api/workspace", workspaceRouter)
+
+app.use(errorHandlerMiddleware)
 
 app.listen(
     8082,
