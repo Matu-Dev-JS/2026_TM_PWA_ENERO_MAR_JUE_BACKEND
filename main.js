@@ -16,6 +16,14 @@ app.use(cors())
 app.use(express.json())
 app.use(verifyApiKeyMiddleware)
 
+app.get('/', (request, response) => {
+    response.json({
+        ok: true,
+        message: 'Servidor funcionando correctamente',
+        data: null
+    })
+})
+
 app.use("/api/auth", authRouter)
 app.use("/api/workspace", workspaceRouter)
 

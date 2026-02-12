@@ -3,6 +3,8 @@ import mail_transporter from "../config/mail.config.js"
 import ServerError from "../helpers/error.helpers.js"
 import userRepository from "../repository/user.repository.js"
 import workspaceRepository from "../repository/workspace.repository.js"
+import workspaceService from '../services/workspace.service.js'
+
 
 import jwt from 'jsonwebtoken'
 
@@ -37,16 +39,7 @@ class WorkspaceController {
     async delete(request, response) {
         const user_id = request.user.id
         const { workspace_id } = request.params
-
-        const workspace_selected = await workspaceRepository.getById(workspace_id)
-        if (!workspace_selected) {
-            throw new ServerError('No existe ese espacio de trabajo', 404)
-        }
-        const member_info = await workspaceRepository.getMemberByWorkspaceIdAndUserId(workspace_id, user_id)
-        if (member_info.role !== 'Owner') {
-            throw new ServerError('No tienes permiso para eliminar este espacio de trabajo', 403)
-        }
-        await workspaceRepository.delete(workspace_id)
+        await workspaceService.deleteFromUser(workspace_id, user_id)
         response.json({
             ok: true,
             message: 'Espacio de trabajo eliminado correctamente',
