@@ -10,8 +10,6 @@ import jwt from 'jsonwebtoken'
 
 class WorkspaceController {
     async getWorkspaces(request, response) {
-        //Quiero obtener los espacios de trabajo asociados al cliente que hace la consulta
-        console.log("El usuario logueado es: ", request.user) //request.user
         const user_id = request.user.id
         const workspaces = await workspaceRepository.getWorkspacesByUserId(user_id)
         response.json({
@@ -52,7 +50,6 @@ class WorkspaceController {
         const { email, role } = request.body
         const workspace = request.workspace
 
-        console.log({ workspace })
         const user_to_invite = await userRepository.buscarUnoPorEmail(email)
         if (!user_to_invite) {
             throw new ServerError('El email del invitado no existe.', 404)

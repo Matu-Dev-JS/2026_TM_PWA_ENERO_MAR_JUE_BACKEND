@@ -1,15 +1,6 @@
 import ServerError from "../helpers/error.helpers.js"
 import workspaceRepository from "../repository/workspace.repository.js"
 
-/* 
-Manejamos en el servicio la logica de negocio 
-
-Otros ejemplos:
-- Cuando un espacio de trabajo se elimina se debe notificar via mail a todos los miembros
-- Quieren hacer un 2FA y mandar un codigo via SMS
-- 
-*/
-
 class WorkspaceService {
     async deleteFromUser(workspace_id, user_id) {
         const workspace_selected = await workspaceRepository.getById(workspace_id)

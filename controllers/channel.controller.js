@@ -20,8 +20,6 @@ class ChannelController {
         const { name } = request.body
         const { workspace_id } = request.params
 
-        //Pueden validar el nombre
-
         const channel_created = await channelRepository.create(workspace_id, name)
         response.json(
             {
